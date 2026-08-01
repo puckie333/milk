@@ -1207,21 +1207,8 @@ const addMessage = (message) => {
     const wasEmpty = messages.length === 0;
 
     const prevMsg = messages.length > 0 ? messages[messages.length - 1] : null;
-messages.push(message);
-
-console.log("收到消息：", message);
-
-    if ("Notification" in window && Notification.permission === "granted") {
-        navigator.serviceWorker.ready.then(registration => {
-    registration.showNotification(settings.partnerName || "对方", {
-        body: message.text,
-        icon: "https://file.youtochat.com/images/20260216/1771224856844_qdqqd.jpeg",
-        badge: "https://file.youtochat.com/images/20260216/1771224856844_qdqqd.jpeg",
-        tag: "chat-message"
-    });
-});
-    }
-}
+    messages.push(message);
+    
     if (wasEmpty) {
         DOMElements.emptyState.style.display = 'none';
     }
