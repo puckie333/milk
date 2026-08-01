@@ -1207,9 +1207,9 @@ const addMessage = (message) => {
     const wasEmpty = messages.length === 0;
 
     const prevMsg = messages.length > 0 ? messages[messages.length - 1] : null;
-    messages.push(message);
-    if (message.sender !== 'user' && message.type === 'normal') {
-    console.log(message);
+messages.push(message);
+
+console.log("收到消息：", message);
 
 if (message.sender !== 'user') {
     alert("收到一条消息：" + message.text);
@@ -1221,7 +1221,6 @@ if (message.sender !== 'user') {
         });
     }
 }
-    }
     if (wasEmpty) {
         DOMElements.emptyState.style.display = 'none';
     }
