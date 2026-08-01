@@ -1209,12 +1209,18 @@ const addMessage = (message) => {
     const prevMsg = messages.length > 0 ? messages[messages.length - 1] : null;
     messages.push(message);
     if (message.sender !== 'user' && message.type === 'normal') {
+    console.log(message);
+
+if (message.sender !== 'user') {
+    alert("收到一条消息：" + message.text);
+
     if ("Notification" in window && Notification.permission === "granted") {
         new Notification(settings.partnerName || "对方", {
             body: message.text,
             icon: "https://file.youtochat.com/images/20260216/1771224856844_qdqqd.jpeg"
         });
     }
+}
     }
     if (wasEmpty) {
         DOMElements.emptyState.style.display = 'none';
