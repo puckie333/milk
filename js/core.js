@@ -1211,14 +1211,15 @@ messages.push(message);
 
 console.log("收到消息：", message);
 
-if (message.sender !== 'user') {
-    alert("收到一条消息：" + message.text);
-
     if ("Notification" in window && Notification.permission === "granted") {
-        new Notification(settings.partnerName || "对方", {
-            body: message.text,
-            icon: "https://file.youtochat.com/images/20260216/1771224856844_qdqqd.jpeg"
-        });
+        navigator.serviceWorker.ready.then(registration => {
+    registration.showNotification(settings.partnerName || "对方", {
+        body: message.text,
+        icon: "https://file.youtochat.com/images/20260216/1771224856844_qdqqd.jpeg",
+        badge: "https://file.youtochat.com/images/20260216/1771224856844_qdqqd.jpeg",
+        tag: "chat-message"
+    });
+});
     }
 }
     if (wasEmpty) {
